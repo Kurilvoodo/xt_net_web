@@ -97,21 +97,62 @@ namespace XtEpamTask00
             {
                 Console.WriteLine("Размерность {0} точки = ", i);
                 int t;
-                
-                t = int.Parse(Console.ReadLine());
-                OuterMassive[i] = new int[t];
+                if (int.TryParse(Console.ReadLine(), out t))
+                {
+                    OuterMassive[i] = new int[t];
+                }
+                else
+                {
+                    throw new Exception();
+                }
+
 
                 for (int j = 0; j < t; j++)
                 {
-                    Console.Write("Massive[{0}][{1}] = ",i,j);
-                    OuterMassive[i][j] = int.Parse(Console.ReadLine());
+                    Console.Write("Massive[{0}][{1}] = ", i, j);
+                    int ent;
+                    if (int.TryParse(Console.ReadLine(), out ent))
+                    {
+                        OuterMassive[i][j] = ent;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Ошибка ввода" + Environment.NewLine);
+                    }
+                    
                 }
+                //t = int.Parse(Console.ReadLine());
+
+
+
             }
            
             return OuterMassive;
 
         }
 
+        static void WholeToothedSort(ref int[][] catch_arr)
+        {
+            List<int> storage = new List<int>();
+            foreach (int[] stage_in_arr in catch_arr)
+            {
+                foreach (int elem in stage_in_arr)
+                {
+                    storage.Add(elem);
+                }
+            }
+            storage.Sort();
+
+            int index_of_sorted_list = 0;
+            for (int i = 0; i < catch_arr.Length; i++)
+            {
+                for (int j = 0; j < catch_arr[i].Length; j++)
+                {
+                    catch_arr[i][j] = storage[index_of_sorted_list];
+                    index_of_sorted_list++;
+                }
+            }
+        }
         #endregion
         static void Main(string[] args)
         {
@@ -176,10 +217,12 @@ namespace XtEpamTask00
             //Printinh generated massive
             print(a);
 
-            for (int i = 0; i < n; i++) //sort
-            {
-                Array.Sort(a[i]);
-            }
+            //for (int i = 0; i < n; i++) //sort
+            //{
+            //    Array.Sort(a[i]);
+            //}
+            WholeToothedSort(ref a);
+
             
             Console.WriteLine("Отсортированный массив");
             print(a);
