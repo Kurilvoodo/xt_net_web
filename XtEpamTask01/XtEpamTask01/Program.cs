@@ -8,14 +8,14 @@ namespace XtEpamTask01
 {
     class Program
     {
-        #region Method 1.1
+        #region Method 1.1 RectangleSquare(int a, int b)
         static int RectangleSquare(int a, int b)
         {
             return a * b;
         }
         #endregion
 
-        #region Method for 1.2
+        #region Method for 1.2 SimpleTriangle(int n)
         static void SimpleTriangle(int n)
         {
             for (int i = 0; i <= n; i++)
@@ -29,7 +29,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Method for 1.3
+        #region Method for 1.3 NoSoSimpleTriangle(int n)
         static void NoSoSimpleTriangle(int n)
         {
             for (int i = 1; i <= n * 2; i += 2)
@@ -39,7 +39,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Method for 1.4
+        #region Method for 1.4 XmasMethod(int n)
         static void XmasMethod(int n)
         {
             for (int i = 1; i <= n + 1; i++)
@@ -52,7 +52,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Method for 1.5
+        #region Method for 1.5 CapriciousAmount()
 
         static int CapriciousAmount()
         {
@@ -68,7 +68,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Structure for 1.6
+        #region Structure for 1.6 FontMethod(ref List<Fonts> styles, int n)
         [Flags]
         enum Fonts
         {
@@ -91,7 +91,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Method and Sort for 1.7
+        #region Method for 1.7 QuickSort(int i, int j, int[] a)
         static void Randomization(ref int[] a)
         {
             Random rnd = new Random();
@@ -146,7 +146,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region Methods for 1.8 multiple array
+        #region Methods for 1.8 MultipleChanges(ref int[,,] a, int n)
         static void Randomization(ref int[,,] a, int n)
         {
             Random rnd = new Random();
@@ -185,10 +185,11 @@ namespace XtEpamTask01
             {
                 Console.Write("{0} ", item);
             }
+            Console.Write("" + Environment.NewLine);
         }
         #endregion
 
-        #region Methods for 1.9 non negative summ array
+        #region Methods for 1.9 Summing(int [] a)
         static int Summing(int [] a)
         {
             int summ = 0;
@@ -203,7 +204,7 @@ namespace XtEpamTask01
         }
         #endregion
 
-        #region methods for 1.10 2D Array
+        #region methods for 1.10 Summing(int [,] a,int n)
         static void Randomization(ref int [,] a, int n)
         {
             Random rnd = new Random();
@@ -240,6 +241,52 @@ namespace XtEpamTask01
         }
         #endregion
 
+
+        #region Methods for 1.11 string  AverageLengthOfTheString(string test)
+        static float AverageLengthOfTheString(string test)
+        {
+            test += " "; //add the separator to mention the last word of a string and method IsSeparator
+
+            float result=0; // average length of word in string
+
+            int lenOfWord = 0;
+            int wordsCounter = 0;
+
+            for (int i = 0; i < test.Length; i++)
+            {
+                if (char.IsPunctuation(test[i]) || char.IsDigit(test[i]) ||
+                    char.IsNumber(test[i]) || char.IsSeparator(test[i]))
+                {
+                    if (lenOfWord > 0)
+                    {
+                        wordsCounter++;
+                        result += (float)lenOfWord;
+                    }
+                    lenOfWord = 0;
+                }
+                else
+                {
+                    lenOfWord++;
+                }
+            }
+            return result / wordsCounter;
+        }
+        #endregion
+
+        #region for 1.12
+        static void DoubleSubSymbols(ref string str, string substr)
+        {
+            str.ToLower();
+            substr.ToLower(); //to make all the sybmols equal to similar format
+            substr = new string(substr.Distinct().ToArray());//first to do is to delete not unique symbols in substr
+
+            foreach (char item in substr)
+            {
+                str = str.Replace(item.ToString(), new string(item, 2)); // replace in main str all the symbols that exists in new string with doubled symbols, where item = symbol to double.
+            }
+
+        }
+        #endregion
         static void Main(string[] args)
         {
             #region 1.1 Rectangle
@@ -252,7 +299,7 @@ namespace XtEpamTask01
 
             if (int.TryParse(Console.ReadLine(), out a) & !(a <= 0))
             {
-                Console.WriteLine("Enter the 'b' side ");
+                Console.WriteLine("Enter the 'b' side " + Environment.NewLine);
                 Console.Write("b = ");
                 int b;
                 if (int.TryParse(Console.ReadLine(), out b) & !(b <= 0))
@@ -264,7 +311,7 @@ namespace XtEpamTask01
                     if (b <= 0)
                     {
                         //exception
-                        throw new System.ArgumentException("Parameter cannot be negative or equal to 0", "b");
+                        throw new System.ArgumentException("Parameter cannot be negative or equal to 0", "b" + Environment.NewLine);
                     }
                     else
                     {
@@ -279,7 +326,7 @@ namespace XtEpamTask01
                 if (a <= 0)
                 {
                     //exception
-                    throw new System.ArgumentException("Parameter cannot be negative or equal to 0", "a");
+                    throw new System.ArgumentException("Parameter cannot be negative or equal to 0", "a" + Environment.NewLine);
                 }
                 else
                 {
@@ -293,7 +340,7 @@ namespace XtEpamTask01
 
             #region 1.2 Triangle version 1 :D
             //Triangle for N strings, where number was entered from the console.
-            Console.WriteLine("Welcome to another part of Task 01, the Triangle painting! " + Environment.NewLine + "Please enter the N number of strings");
+            Console.WriteLine("Welcome to another part of Task 01, the Triangle painting! " + Environment.NewLine + "Please enter the N number of strings" + Environment.NewLine);
             Console.Write("Enter N = ");
             int n;
             if (int.TryParse(Console.ReadLine(), out n))
@@ -408,16 +455,16 @@ namespace XtEpamTask01
             #endregion
 
             #region Task 1.7 Array processing
-            Console.WriteLine("Enter the number of elements in array");
+            Console.WriteLine("Enter the number of elements in array" + Environment.NewLine);
             
             if (int.TryParse(Console.ReadLine(), out n))
             {
                 //Array and random generating
                 int[] array = new int[n];
                 Randomization(ref array);
-                Console.WriteLine("Randomized array");
+                Console.WriteLine("Randomized array" + Environment.NewLine);
                 Print(array);
-                Console.WriteLine("Sorted array");
+                Console.WriteLine("Sorted array" + Environment.NewLine);
                 QuickSort(0, array.Length - 1, array); // main sort method
                 Print(array);
             }
@@ -428,7 +475,7 @@ namespace XtEpamTask01
             #endregion
 
             #region Task 1.8 No Positive, Multiple array
-            Console.WriteLine("Enter the capacity of multiple array t x t x t");
+            Console.WriteLine("Enter the capacity of multiple array t x t x t" + Environment.NewLine);
             if (int.TryParse(Console.ReadLine(), out n))
             {
                 int[,,] multipleArray = new int[n, n, n];
@@ -443,16 +490,16 @@ namespace XtEpamTask01
             #endregion
 
             #region Task 1.9 Non negative summ
-            Console.WriteLine("Enter number of elements in array");
+            Console.WriteLine("Enter number of elements in array" + Environment.NewLine);
             if (int.TryParse(Console.ReadLine(), out n))
             {
                 
                 int[] arrayNonNegative = new int[n];
                 Randomization(ref arrayNonNegative);
-                Console.WriteLine("Randomized array");
+                Console.WriteLine("Randomized array" + Environment.NewLine);
                 Print(arrayNonNegative);
                 int summ = Summing(arrayNonNegative);
-                Console.WriteLine("Summ of non negative elements in arra equal to {0}", summ); //concatenation of argument
+                Console.WriteLine("Summ of non negative elements in arra equal to {0}", summ + Environment.NewLine); //concatenation of argument
             }
             else
             {
@@ -477,7 +524,30 @@ namespace XtEpamTask01
             {
                 Console.WriteLine("Incorrect input" + Environment.NewLine);
             }
-            
+
+            #endregion
+
+            #region Task 1.11 c# Avergge String Length
+            //string enteringTestOne = Console.ReadLine();
+            //string enteringTestTwo = Console.ReadLine();
+            string enteringTestOne = "Way way true hate inspiring codeing is fun hehe";
+            string enteringTestTwo = "I don't know when it's over for me :D, I have to think out a bigger words";
+            Console.WriteLine("Average number of words in string 1 is equal to {0}", AverageLengthOfTheString(enteringTestOne) + Environment.NewLine);//concetanation of arguement to make it more workable :d
+            Console.WriteLine("Average number of words in string 2 is equal to {0}", AverageLengthOfTheString(enteringTestTwo) + Environment.NewLine);
+            #endregion
+
+            #region Task 1.12 
+            string test1 = "Написать программу которая";
+            string test2 = "описание ";
+            Console.WriteLine("Change: {0}", test1 + Environment.NewLine + " and substring is {0}", test2 + Environment.NewLine );
+            DoubleSubSymbols(ref test1, test2);
+            Console.WriteLine("Example from the task: {0}", test1+ Environment.NewLine);
+            Console.WriteLine("Now you can enter your own tests." + Environment.NewLine + "Enter String number 1:" + Environment.NewLine);
+            test1=Console.ReadLine();
+            Console.WriteLine("Enter String number 2:" + Environment.NewLine);
+            test2 = Console.ReadLine();
+            DoubleSubSymbols(ref test1, test2);
+            Console.WriteLine("Your own result {0}", test1);
             #endregion
             Console.WriteLine("End of program");
             Console.ReadLine();
