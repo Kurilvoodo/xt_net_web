@@ -108,7 +108,7 @@ namespace XtEpamTask01
                 else if (a[k] < firstKey)
                 { return i; }
             }
-            return -1;//возвращаем тогда, когда различные ключи не найдены
+            return -1;
         }
         static int Partition(int i, int j, int pivot, int[] a)
         {
@@ -166,12 +166,80 @@ namespace XtEpamTask01
         {
             for (int i = 0; i < n - 1; i++)
             {
-
-
-
+                for (int j = 0; j < n - 1; j++)
+                {
+                    for (int z = 0; z < n - 1; z++)
+                    {
+                        if (a[i, j, z] > 0)
+                        {
+                            a[i, j, z] = 0;
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("Hang out, work is done.");
+        }
+        static void Print(int[,,] a)
+        {
+            foreach (int item in a)
+            {
+                Console.Write("{0} ", item);
             }
         }
         #endregion
+
+        #region Methods for 1.9 non negative summ array
+        static int Summing(int [] a)
+        {
+            int summ = 0;
+            foreach (int item in a)
+            {
+                if (item > 0)
+                {
+                    summ += item;
+                }  
+            }
+            return summ;
+        }
+        #endregion
+
+        #region methods for 1.10 2D Array
+        static void Randomization(ref int [,] a, int n)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    a[i,j] = rnd.Next(-150, 150);
+                }
+            }
+        }
+        static void Print(int [,] a)
+        {
+            foreach (int item in a)
+            {
+                Console.Write(" {0} ", item);
+            }
+            Console.WriteLine();
+        }
+        static int Summing(int [,] a,int n)
+        {
+            int summ = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    if ( (i+j) % 2 == 0)
+                    {
+                        summ += a[i,j];
+                    }
+                }
+            }
+            return summ;
+        }
+        #endregion
+
         static void Main(string[] args)
         {
             #region 1.1 Rectangle
@@ -341,16 +409,16 @@ namespace XtEpamTask01
 
             #region Task 1.7 Array processing
             Console.WriteLine("Enter the number of elements in array");
-            int t;
-            if (int.TryParse(Console.ReadLine(), out t))
+            
+            if (int.TryParse(Console.ReadLine(), out n))
             {
-                //Массив и его заполнение
-                int[] array = new int[t];
+                //Array and random generating
+                int[] array = new int[n];
                 Randomization(ref array);
                 Console.WriteLine("Randomized array");
                 Print(array);
                 Console.WriteLine("Sorted array");
-                QuickSort(0, array.Length - 1, array);
+                QuickSort(0, array.Length - 1, array); // main sort method
                 Print(array);
             }
             else
@@ -361,19 +429,55 @@ namespace XtEpamTask01
 
             #region Task 1.8 No Positive, Multiple array
             Console.WriteLine("Enter the capacity of multiple array t x t x t");
-            if (int.TryParse(Console.ReadLine(), out t))
+            if (int.TryParse(Console.ReadLine(), out n))
             {
-                int[,,] multipleArray = new int[t, t, t];
-                Randomization(ref multipleArray, t);
+                int[,,] multipleArray = new int[n, n, n];
+                Randomization(ref multipleArray, n);
+                MultipleChanges(ref multipleArray, n);
+                Print( multipleArray);
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input" + Environment.NewLine);
+            }
+            #endregion
 
-
+            #region Task 1.9 Non negative summ
+            Console.WriteLine("Enter number of elements in array");
+            if (int.TryParse(Console.ReadLine(), out n))
+            {
+                
+                int[] arrayNonNegative = new int[n];
+                Randomization(ref arrayNonNegative);
+                Console.WriteLine("Randomized array");
+                Print(arrayNonNegative);
+                int summ = Summing(arrayNonNegative);
+                Console.WriteLine("Summ of non negative elements in arra equal to {0}", summ); //concatenation of argument
             }
             else
             {
                 Console.WriteLine("Incorrect input" + Environment.NewLine);
             }
 
+            #endregion
 
+            #region Task 1.10  2D Array
+            Console.WriteLine("Enter capacity n x n"+ Environment.NewLine);
+            if (int.TryParse(Console.ReadLine(), out n))
+            {
+                int[,] doubledArray = new int[n,n];
+                
+                Randomization(ref doubledArray, n);
+                Console.WriteLine("Randomized array" + Environment.NewLine);
+                Print(doubledArray);
+                int summ = Summing(doubledArray, n);
+                Console.WriteLine("Summ of 'even' elements in array equal to {0}", summ + Environment.NewLine); //concatenation of argument
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input" + Environment.NewLine);
+            }
+            
             #endregion
             Console.WriteLine("End of program");
             Console.ReadLine();
