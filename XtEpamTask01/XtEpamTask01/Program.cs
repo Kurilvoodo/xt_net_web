@@ -42,9 +42,9 @@ namespace XtEpamTask01
         #region Method for 1.4
         static void XmasMethod(int n)
         {
-            for (int i = 1; i <= n+1; i ++)
+            for (int i = 1; i <= n + 1; i++)
             {
-                for (int t = 1; t <=i*2; t+=2)
+                for (int t = 1; t <= i * 2; t += 2)
                 {
                     Console.WriteLine(new string(' ', (n * 2) / 2 - t / 2) + new string('*', t));
                 }
@@ -76,9 +76,9 @@ namespace XtEpamTask01
             Bold = 1,
             Italic = 2,
             underline = 3,
-            exit = 4 
+            exit = 4
         }
-        static void FontMethod(ref List<Fonts> styles, int n )
+        static void FontMethod(ref List<Fonts> styles, int n)
         {
             if (styles.Contains((Fonts)n))
             {
@@ -87,6 +87,88 @@ namespace XtEpamTask01
             else
             {
                 styles.Add((Fonts)n);
+            }
+        }
+        #endregion
+
+        #region Method and Sort for 1.7
+        static void Randomization(ref int[] a)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < a.Length; i++)
+            {
+                a[i] = rnd.Next(-150, 150);
+            }
+        }
+        static int FindPivot(int i, int j, int[] a)
+        {
+            int firstKey = a[i]; for (int k = i + 1; k <= j; k++)
+            {
+                if (a[k] > firstKey) { return k; }
+                else if (a[k] < firstKey)
+                { return i; }
+            }
+            return -1;//возвращаем тогда, когда различные ключи не найдены
+        }
+        static int Partition(int i, int j, int pivot, int[] a)
+        {
+            int temp;
+            int left = i;
+            int right = j;
+            do
+            {
+                temp = a[left]; a[left] = a[right]; a[right] = temp;
+                while (a[left] < pivot) { left++; }
+                while (a[right] >= pivot) { right--; }
+            } while (left < right);
+            return left;
+        }
+
+        static void QuickSort(int i, int j, int[] a)
+        {
+            int index = FindPivot(i, j, a);
+            if (index != -1)
+            {
+                int pivot = a[index];
+                int k = Partition(i, j, pivot, a);
+                QuickSort(i, k - 1, a);
+                QuickSort(k, j, a);
+
+            }
+        }
+        static void Print(int[] a)
+        {
+            foreach (int item in a)
+            {
+                Console.Write(" {0} ", item);
+            }
+            Console.WriteLine();
+        }
+        #endregion
+
+        #region Methods for 1.8 multiple array
+        static void Randomization(ref int[,,] a, int n)
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - 1; j++)
+                {
+                    for (int z = 0; z < n - 1; z++)
+                    {
+                        a[i, j, z] = rnd.Next(-150, 150);
+                    }
+                }
+
+            }
+        }
+        static void MultipleChanges(ref int[,,] a, int n)
+        {
+            for (int i = 0; i < n - 1; i++)
+            {
+
+
+
             }
         }
         #endregion
@@ -182,15 +264,15 @@ namespace XtEpamTask01
 
             #region Task 1.5 Summ
             // Summ of numbers lower than 1000 and aliquot to 3 and 5
-            Console.WriteLine(" Summ of numbers lower than 1000 and aliquot to 3 and 5"+ Environment.NewLine);
-            Console.Write(CapriciousAmount()+Environment.NewLine);
+            Console.WriteLine(" Summ of numbers lower than 1000 and aliquot to 3 and 5" + Environment.NewLine);
+            Console.Write(CapriciousAmount() + Environment.NewLine);
             #endregion
 
-            #region Task 1.6 
+            #region Task 1.6 Font Adjustment
             Fonts op = new Fonts();
-            
+
             List<Fonts> styles = new List<Fonts>();
-            string result ="";
+            string result = "";
             do
             {
                 StringBuilder fontKeeper = new StringBuilder();
@@ -241,20 +323,57 @@ namespace XtEpamTask01
                         case 4:
                             op = Fonts.exit;
                             Console.Write("You've ended to edit your font styler" + Environment.NewLine);
-                             result = fontKeeper.ToString();
+                            result = fontKeeper.ToString();
                             break;
-                        
+
                     }
-                    
+
 
                 }
                 else
                 {
                     Console.Write("Incorrect input" + Environment.NewLine);
                 }
-                
+
             } while (op != Fonts.exit);
             Console.WriteLine("Параметры надписи: {0}", result + Environment.NewLine);
+            #endregion
+
+            #region Task 1.7 Array processing
+            Console.WriteLine("Enter the number of elements in array");
+            int t;
+            if (int.TryParse(Console.ReadLine(), out t))
+            {
+                //Массив и его заполнение
+                int[] array = new int[t];
+                Randomization(ref array);
+                Console.WriteLine("Randomized array");
+                Print(array);
+                Console.WriteLine("Sorted array");
+                QuickSort(0, array.Length - 1, array);
+                Print(array);
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input" + Environment.NewLine);
+            }
+            #endregion
+
+            #region Task 1.8 No Positive, Multiple array
+            Console.WriteLine("Enter the capacity of multiple array t x t x t");
+            if (int.TryParse(Console.ReadLine(), out t))
+            {
+                int[,,] multipleArray = new int[t, t, t];
+                Randomization(ref multipleArray, t);
+
+
+            }
+            else
+            {
+                Console.WriteLine("Incorrect input" + Environment.NewLine);
+            }
+
+
             #endregion
             Console.WriteLine("End of program");
             Console.ReadLine();
