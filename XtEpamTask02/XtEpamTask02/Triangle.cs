@@ -95,7 +95,7 @@ namespace XtEpamTask02
             }
             else if (a + b <= c || a + c <= b || b + c <= a)
             {
-                throw new Exception("Sides of triangle can't be negative");
+                throw new Exception("Sides of triangle can't be negative or disbalanced like a+b>c or a+c>b and etc.");
             }
             else
             {

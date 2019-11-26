@@ -10,9 +10,10 @@ namespace XtEpamTask02
     {
         private string _surname;
         private string _name;
+        private string _otch;
         private DateTime _dateOfBirth;
-        private int _age;
-
+        
+        #region Property 
         public string Surname
         {
             get
@@ -35,6 +36,17 @@ namespace XtEpamTask02
                 _name = value;
             }
         }
+        public string Otch
+        {
+            get
+            {
+                return _otch;
+            }
+            set 
+            {
+                _otch = value;
+            }
+        }
         public DateTime DateOfBirth
         {
             get
@@ -43,7 +55,15 @@ namespace XtEpamTask02
             }
             set
             {
-                _dateOfBirth = value;
+                if (value < DateTime.Now)
+                {
+                    _dateOfBirth = value;
+                }
+                else
+                {
+                    throw new Exception("Date of Birth can't be further than today");
+                }
+                
             }
         }
 
@@ -51,28 +71,33 @@ namespace XtEpamTask02
         {
             get 
             {
-                return _age;
+                return (int)DateTime.Now.Subtract(_dateOfBirth).TotalDays / 365;
             }
-            set 
-            {
-                if (value > 0)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    DateTime servant = new DateTime();
-                    servant = DateTime.Now;
-                    if ((servant.Year - this.DateOfBirth.Year) == value)
-                    {
-                        _age = value;
-                    }
-                    else 
-                    {
-                        throw new Exception($"This must be mistake, age = {value} isn't equal to Date of Birth {this._dateOfBirth}");
-                    }
-                }
-            }
+        }
+        #endregion
+
+        public User()
+        {
+            _surname = "";
+            _name = "";
+            _dateOfBirth = DateTime.Today;
+            
+        }
+        public User(string surname, string name,string otch, DateTime birthday)
+        {
+            this._surname = surname;
+            this._name = name;
+            this._otch = otch;
+             this._dateOfBirth = birthday;
+        }
+
+        public override string ToString()
+        {
+            return String.Format("Name: {0}" + Environment.NewLine +
+                "Surname: {1}" + Environment.NewLine +
+                "Otch: {2}" + Environment.NewLine +
+                "Date of Birth: {3}" + Environment.NewLine +
+                "Age: {4}", _name, _surname, _otch, _dateOfBirth, Age);
         }
     }
 }
