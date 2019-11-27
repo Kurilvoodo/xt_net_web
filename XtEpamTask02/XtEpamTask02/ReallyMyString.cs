@@ -26,6 +26,7 @@ namespace XtEpamTask02
         {
             this.text = str;
         }
+        
         public static bool operator ==(ReallyMyString string1, ReallyMyString string2)
         {
             return Enumerable.SequenceEqual(string1.text, string2.text);
@@ -39,7 +40,7 @@ namespace XtEpamTask02
         {
             return new ReallyMyString(string1.text.Concat(string2.text).ToArray());
         }
-        
+
 
         public override string ToString()
         {
@@ -56,6 +57,18 @@ namespace XtEpamTask02
             {
                 return -1;
             }
+        }
+        //To array of symbols and back
+        public static explicit operator ReallyMyString(char[] c)
+        {
+
+            return new ReallyMyString(c);
+        }
+        public static explicit operator char[](ReallyMyString string1)
+        {
+            char[] c = new char[string1.text.Length];
+            Array.Copy(string1.text,0, c, 0,c.Length);
+            return c;
         }
 
     }

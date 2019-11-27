@@ -166,6 +166,28 @@ namespace XtEpamTask02
             Users.Add(keepTwo);
             #endregion
             #region Task 2.4
+            char[] sr1 = new char[] { 'F', 'i', 'r', 's', 't', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'w', 'r', 'i', 't','e'};
+            char[] sr2 = new char[] { 'O', 'n', 'e', ' ', 'm', 'o', 'r', 'e', };
+            ReallyMyString testStr1 = new ReallyMyString(sr1);
+            ReallyMyString testStr2 = new ReallyMyString(sr2);
+            Console.WriteLine(testStr1.ToString());
+            Console.Write("Concatenation: "+Environment.NewLine);
+            ReallyMyString testStr3 = testStr1 + testStr2;
+            Console.WriteLine(testStr3.ToString());
+            
+
+            Console.WriteLine("Search of a symbol in the first string: {0}", testStr3.FindSymbol('e'));
+            Console.WriteLine("Search of a symbol in the second one: {0}", testStr3.FindSymbol('a'));
+            Console.WriteLine("Comparing two strings (testStr1 == testStr2): {0}", testStr1 == testStr2);
+            Console.WriteLine("Comparing two strings (testStr1 == testStr3): {0}", testStr1 == testStr2);
+            Console.WriteLine("Comparing two strings (testStr1 != testStr2): {0}", testStr1 != testStr2);
+            Console.WriteLine("Comparing two strings (testStr1 != testStr3): {0}", testStr1 != testStr2);
+            Console.WriteLine("Конвертация массива в объект: {0}", ((ReallyMyString)sr1).GetType());
+            Console.WriteLine("Конвертация объекта строки в массив символов", ((char[])testStr1).GetType());
+            Console.WriteLine("index instrument a[2] = {0}", testStr1[2]);
+            testStr1[1] = '0';
+            Console.WriteLine("Replace second symbol for Zero, a[1] = {0}", testStr1[1]);
+            Console.WriteLine(testStr1+Environment.NewLine);
 
             #endregion
             Console.ReadLine();
