@@ -83,14 +83,8 @@ namespace XtEpamTask02
             {
                 return 2 * _radius * Math.PI;
             }
-
         }
         #endregion
-
-
-
-
-
         #region Counstructor Round()
         public Round()
         {

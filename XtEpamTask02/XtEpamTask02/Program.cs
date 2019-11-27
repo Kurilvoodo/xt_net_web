@@ -190,6 +190,30 @@ namespace XtEpamTask02
             Console.WriteLine(testStr1+Environment.NewLine);
 
             #endregion
+
+            #region Task 2.5
+            
+
+            Employee employee = new Employee("Zhestkiy", "Vitek", "Yur'evich", new DateTime(1991, 2, 1), 8, "Pogrammist");
+            Console.WriteLine(employee.ToString()+Environment.NewLine);
+            List<Employee> slaves = new List<Employee>();
+            slaves.Add(employee);
+            foreach (Employee item in slaves)
+            {
+                Console.WriteLine(item.ToString()+Environment.NewLine);
+            }
+            #endregion
+
+            #region Taskk 2.6
+            Ring figure = new Ring(6,2,5,6);
+            Ring figure2 = new Ring(figure);
+            Console.WriteLine("Square of inner radius circle {0}"+ Environment.NewLine+
+                "Square of ring {1}" + Environment.NewLine +
+                "Length of inner radius circle {3}",figure.Square, figure.RingSquare, figure.LengthOfRing);
+            #endregion
+
+            
+
             Console.ReadLine();
 
         }
