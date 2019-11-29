@@ -8,9 +8,11 @@ namespace XtEpamTask02_8
 {
     class Curse: IBonus
     {
+        #region override intefrace methods
         public void BonusAquire()
         {
             Console.WriteLine("You weapon has been cursed for next three fight states :c");
         }
+        #endregion
     }
 }

@@ -8,6 +8,7 @@ namespace XtEpamTask02
 {
     class ReallyMyString //yeah it's really mine :PPPP
     {
+        
         private char[] text;
         #region index
         public char this[int id]
@@ -22,6 +23,7 @@ namespace XtEpamTask02
             }
         }
         #endregion
+        #region Constructor and override operators
         public ReallyMyString(char[] str)
         {
             this.text = str;
@@ -46,7 +48,7 @@ namespace XtEpamTask02
         {
             return new string(text);
         }
-
+        #endregion
         public int FindSymbol(char c) // return index of a symbol, if it was founded in string or -1 if it haven't been found
         {
             if (text.Contains(c))
@@ -59,6 +61,7 @@ namespace XtEpamTask02
             }
         }
         //To array of symbols and back
+        #region Explicit operator
         public static explicit operator ReallyMyString(char[] c)
         {
 
@@ -70,6 +73,7 @@ namespace XtEpamTask02
             Array.Copy(string1.text,0, c, 0,c.Length);
             return c;
         }
+        #endregion
 
     }
 }

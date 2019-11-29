@@ -13,7 +13,7 @@ namespace XtEpamTask02_8
             List<IBonus> iBonuses = new List<IBonus>();
             List<IObstacle> iObstacles = new List<IObstacle>();
             List<IEnemy> ienemies = new List<IEnemy>();
-
+            Player Lmao = new Player();
         }
     }
 }

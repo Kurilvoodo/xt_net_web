@@ -8,6 +8,7 @@ namespace XtEpamTask02
 {
     internal class Round
     {
+        #region fileds and properties
         private double _x; //double was chosen cause of we have no lack of memory yet in this program
         private double _y;
         private double _radius;
@@ -22,7 +23,7 @@ namespace XtEpamTask02
                 _x = value;
             }
         }
-        #region property
+        
         public double Y
         {
             get
@@ -55,6 +56,7 @@ namespace XtEpamTask02
             }
         }
         #endregion
+
         #region Operators override
         public static Round operator ++(Round circle)
         {
@@ -85,6 +87,7 @@ namespace XtEpamTask02
             }
         }
         #endregion
+
         #region Counstructor Round()
         public Round()
         {

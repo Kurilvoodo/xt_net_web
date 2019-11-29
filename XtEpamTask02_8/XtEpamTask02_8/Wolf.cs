@@ -8,11 +8,13 @@ namespace XtEpamTask02_8
 {
     class Wolf: IEnemy
     {
+        #region override intefrace methods
         public void MoveTo()
         { }
         public void DeathGrisp()
         {
             Console.WriteLine("*Howling for the last time*");
         }
+        #endregion
     }
 }

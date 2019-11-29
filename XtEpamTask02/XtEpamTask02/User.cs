@@ -8,12 +8,13 @@ namespace XtEpamTask02
 {
     class User
     {
+        #region fileds and properties
         private string _surname;
         private string _name;
         private string _otch;
         private DateTime _dateOfBirth;
         
-        #region Property 
+        
         public string Surname
         {
             get
@@ -76,6 +77,7 @@ namespace XtEpamTask02
         }
         #endregion
 
+        #region Constructors
         public User()
         {
             _surname = "";
@@ -90,6 +92,7 @@ namespace XtEpamTask02
             this._otch = otch;
              this._dateOfBirth = birthday;
         }
+        #endregion
 
         public override string ToString()
         {

@@ -50,10 +50,12 @@ namespace XtEpamTask02_7
         }
 
         #endregion
+        #region Methods
         public double LineLength()
         {
             return Math.Abs( Math.Sqrt( Math.Pow( (Second.X-First.X) ,2 ) + Math.Pow( (Second.Y - Second.Y), 2 ) ) );
         }
+        #endregion
         #region Constructor
         public Line(Point one, Point two)
         {

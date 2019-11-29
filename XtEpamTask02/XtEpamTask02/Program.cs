@@ -23,6 +23,7 @@ namespace XtEpamTask02
                 "First type of constractor is Round(double,double,double)");
             double enter1, enter2, enter3;
             Console.Write("X = ");
+            #region Big code exception safety
             if (double.TryParse(Console.ReadLine(), out enter1))
             {
 
@@ -49,14 +50,14 @@ namespace XtEpamTask02
             {
                 Console.WriteLine("Incorrect input" + Environment.NewLine);
             }
-
+            #endregion
             Round test2 = new Round(enter1,enter2,enter3);
             Console.WriteLine($"The round has been created {test1.X} {test1.Y} {test1.Radius}" +  Environment.NewLine);
             Console.WriteLine($"Property of Round Class for Square {test1.Square}" + Environment.NewLine + $" And Length of circle is {test1.LengthOfRing}");
             Console.WriteLine("You can also switch change some parameters if you want to.");
-            
-                
-                
+
+
+            #region Code Exception safety 2   
             Console.Write("X = ");
             if (double.TryParse(Console.ReadLine(), out enter1))
             {
@@ -84,22 +85,15 @@ namespace XtEpamTask02
             {
                 Console.WriteLine("Incorrect input" + Environment.NewLine);
             }
+            #endregion
             Round test3 = new Round(enter1,enter2); // x and y counstructor
             Round test4 = new Round(enter3);// radius constructor
             Round test5 = new Round(test1); //class constructor
 
             Console.WriteLine("And of course we have operators oevrrideda ass ++ added +1 to radius and -- decreasing it on 1 as well");
-            test1++;
-            test2++;
-            test3++;
-            test4++;
-            test5++;
+            test1++;   test2++;     test3++;       test4++;         test5++;
             Console.WriteLine($"{test1.Radius} {test2.Radius} {test3.Radius} {test4.Radius} {test5.Radius}" + Environment.NewLine);
-            test1--;
-            test2--;
-            test3--;
-            test4--;
-            test5--;
+            test1--;    test2--;      test3--;       test4--;       test5--;
             Console.WriteLine($"{test1.Radius} {test2.Radius} {test3.Radius} {test4.Radius} {test5.Radius}" + Environment.NewLine);
             #endregion
 
@@ -108,6 +102,7 @@ namespace XtEpamTask02
             Triangle Hi = new Triangle();
             Console.WriteLine("Propertys {0} {1} {2} Square {3} Perimter {4}",Hi.A, Hi.B, Hi.C, Hi.Square,Hi.Perimetr + Environment.NewLine);
             Console.Write("Side a = ");
+            #region big code for safety input
             if (double.TryParse(Console.ReadLine(), out enter1))
             {
 
@@ -134,12 +129,14 @@ namespace XtEpamTask02
             {
                 Console.WriteLine("Incorrect input" + Environment.NewLine);
             }
+            #endregion
             Triangle Hi2 = new Triangle(enter1,enter2,enter3);
             Console.WriteLine("Propertys {0} {1} {2} Square {3} Perimter {4}", Hi.A, Hi.B, Hi.C, Hi.Square, Hi.Perimetr + Environment.NewLine);
             #endregion
 
             #region Task 2.3
             Console.WriteLine("Task 2.3" + Environment.NewLine);
+            #region Input from file and object creating
             List<User> Users = new List<User>();
             using (StreamReader sr = new StreamReader("input_2_3.txt"))
             {
@@ -154,6 +151,7 @@ namespace XtEpamTask02
 
                 }
             }
+            #endregion
             foreach (User item in Users)
             {
                 Console.WriteLine("{0}", item.ToString() + Environment.NewLine);
@@ -165,6 +163,7 @@ namespace XtEpamTask02
             Users.Add(keepOne);
             Users.Add(keepTwo);
             #endregion
+
             #region Task 2.4
             char[] sr1 = new char[] { 'F', 'i', 'r', 's', 't', ' ', 's', 't', 'r', 'i', 'n', 'g', ' ', 't', 'o', ' ', 'w', 'r', 'i', 't','e'};
             char[] sr2 = new char[] { 'O', 'n', 'e', ' ', 'm', 'o', 'r', 'e', };
@@ -211,11 +210,7 @@ namespace XtEpamTask02
                 "Square of ring {1}" + Environment.NewLine +
                 "Length of inner radius circle {3}",figure.Square, figure.RingSquare, figure.LengthOfRing);
             #endregion
-
-            
-
             Console.ReadLine();
-
         }
     }
 }

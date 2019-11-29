@@ -8,8 +8,8 @@ namespace XtEpamTask02_7
 {
     internal class Round: Circle,IFigure
     {
-        
-      
+
+        #region Properties 
         public double Square
         {
             get
@@ -25,7 +25,7 @@ namespace XtEpamTask02_7
                 return 2 * Radius * Math.PI;
             }
         }
-
+        #endregion
         #region Counstructor Round()
         public Round(double x, double y,double radius) : base(x,y,radius)
         {}

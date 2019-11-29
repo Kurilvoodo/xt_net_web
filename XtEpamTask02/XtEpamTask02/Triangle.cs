@@ -8,6 +8,7 @@ namespace XtEpamTask02
 {
     class Triangle
     {
+        #region fileds and properties
         private double _a, _b, _c;
         public double A
         {
@@ -80,6 +81,8 @@ namespace XtEpamTask02
                 return _a + _b + _c;
             }
         }
+        #endregion
+        #region Constructor
         public Triangle()
         {
             //perfect triangle
@@ -87,6 +90,7 @@ namespace XtEpamTask02
             _b = 4;
             _c = 5;
         }
+        
         public Triangle(double a, double b, double c)
         {
             if (a <= 0 || b <= 0 || c <= 0)
@@ -104,6 +108,6 @@ namespace XtEpamTask02
                 this.C = c;
             }
         }
-
+        #endregion
     }
 }

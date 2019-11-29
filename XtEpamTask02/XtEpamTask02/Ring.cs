@@ -8,6 +8,7 @@ namespace XtEpamTask02
 {
     class Ring : Round
     {
+        #region Fields and properties
         private double _innerRadius;
         public double InnerRadius
         {
@@ -51,7 +52,9 @@ namespace XtEpamTask02
                 return 2 * _innerRadius * Math.PI;
             }
         }
+        #endregion
 
+        #region constructors
         public Ring(double x,double y, double radius, double inner_radius) :
             base( x, y, radius)
         {
@@ -70,5 +73,6 @@ namespace XtEpamTask02
         {
             _innerRadius = a._innerRadius;
         }
+        #endregion
     }
 }

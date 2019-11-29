@@ -8,11 +8,13 @@ namespace XtEpamTask02_8
 {
     class Witch: IEnemy
     {
+        #region override intefrace methods
         public void MoveTo()
         { }
         public void DeathGrisp()
         {
             Console.WriteLine("I'll die, but my curses continue to live!");
         }
+        #endregion
     }
 }
