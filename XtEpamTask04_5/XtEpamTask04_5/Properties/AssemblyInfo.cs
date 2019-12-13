@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные с этой сборкой.
-[assembly: AssemblyTitle("XtEpamTask04_3")]
+[assembly: AssemblyTitle("XtEpamTask04_5")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("XtEpamTask04_3")]
+[assembly: AssemblyProduct("XtEpamTask04_5")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID представляет идентификатор typelib, если этот проект доступен из модели COM
-[assembly: Guid("ecac326d-32d0-464c-9b1b-3feca7a538e6")]
+[assembly: Guid("214ab673-bb65-49e0-a2f6-b586b7ce843b")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
