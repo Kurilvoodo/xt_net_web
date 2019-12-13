@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{57825528-D05E-40CF-94EB-4967E99CA161}</ProjectGuid>
+    <ProjectGuid>{D7BBFA6F-2150-46D9-BBE6-1470DC652E43}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XtEpa_Task03_3</RootNamespace>
-    <AssemblyName>XtEpa,Task03_3</AssemblyName>
+    <RootNamespace>XtEpamTask04_1</RootNamespace>
+    <AssemblyName>XtEpamTask04_1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,10 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicArray.cs" />
-    <Compile Include="Enumerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SortClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
