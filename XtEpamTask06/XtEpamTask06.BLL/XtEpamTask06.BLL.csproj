@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{214AB673-BB65-49E0-A2F6-B586B7CE843B}</ProjectGuid>
+    <ProjectGuid>{D0C80E05-BA9A-4322-B676-9905879954F0}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XtEpamTask04_5</RootNamespace>
-    <AssemblyName>XtEpamTask04_5</AssemblyName>
+    <RootNamespace>XtEpamTask06.BLL</RootNamespace>
+    <AssemblyName>XtEpamTask06.BLL</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtension.cs" />
+    <Compile Include="UserLogic.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{214AB673-BB65-49E0-A2F6-B586B7CE843B}</ProjectGuid>
+    <ProjectGuid>{1B86BFE6-6377-4B31-8BC9-36104C1DCEBD}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>XtEpamTask04_5</RootNamespace>
-    <AssemblyName>XtEpamTask04_5</AssemblyName>
+    <RootNamespace>XtEpamTask06</RootNamespace>
+    <AssemblyName>XtEpamTask06</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,10 +45,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StringExtension.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XtEpamTask06.BLL\XtEpamTask06.BLL.csproj">
+      <Project>{d0c80e05-ba9a-4322-b676-9905879954f0}</Project>
+      <Name>XtEpamTask06.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XtEpamTask06.Entities\XtEpamTask06.Entities.csproj">
+      <Project>{d250a9cb-761e-49eb-ae79-4d5ae581e52d}</Project>
+      <Name>XtEpamTask06.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XtEpamTask06.Loc\XtEpamTask06.Ioc.csproj">
+      <Project>{c89ff416-7290-4635-97f4-63f77a694b2d}</Project>
+      <Name>XtEpamTask06.Ioc</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
