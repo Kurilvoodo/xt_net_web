@@ -1,0 +1,36 @@
+
+
+.content{
+    display:  table;
+    background-color: #FAB957; 
+    border: 3px solid brown;
+    width: 200px;
+    margin: auto;
+    position: relative;
+    top: 0;
+    left:0;
+    right:0;
+    bottom: 0;
+    border-radius: 10px;
+}
+
+.p{
+    font: bold;
+    color: #CC2612;
+    margin-top: 10px;
+    margin-bottom: 10 px;
+}
+.f{
+    font: bold;
+    color: white;
+}
+.footer{
+    
+    position: absolute;
+    margin: auto;
+    bottom:0;
+    height: 100px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%,
+    rgba(69,48,145,1) 23%, rgba(0,212,255,1) 100%);
+}
