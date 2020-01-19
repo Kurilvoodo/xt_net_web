@@ -47,6 +47,7 @@ input[type=text], input[type=password] {
   input[type=text]{
     width:100%;
   }
+  
 .registration{
     background-color: #53A9F5;
     position: absolute;
