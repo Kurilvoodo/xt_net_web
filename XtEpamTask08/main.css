@@ -29,8 +29,55 @@
     position: absolute;
     margin: auto;
     bottom:0;
+    right:0;
     height: 100px;
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%,
     rgba(69,48,145,1) 23%, rgba(0,212,255,1) 100%);
+}
+
+input[type=text], input[type=password] {
+    
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    
+  }
+  input[type=text]{
+    width:100%;
+  }
+.registration{
+    background-color: #53A9F5;
+    position: absolute;
+    margin: auto;
+    border: 3px solid #0161B5;
+    padding: 16px;
+    
+
+}
+.registerbtn{
+    background-color: #FAB957;
+    color: black;
+    padding: 9px 14px;
+    margin-left: 20px;
+    
+    border:none;
+    cursor: pointer;
+    opacity: 0.9;
+}
+.registerbtn:hover {
+    opacity:1;
+  }
+hr{
+    color: white;
+    
+}
+#email-block, #password-block, #repeat-password-block, #submit
+{
+    margin-top: 25px;
+    margin-left: 20px;
+}
+.rep-psw-label {
+    margin-left: 95px;
 }
