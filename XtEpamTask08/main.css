@@ -56,6 +56,10 @@ input[type=text], input[type=password] {
     
 
 }
+.header{
+    position: relative;
+    left:20px;
+}
 .registerbtn{
     background-color: #FAB957;
     color: black;
