@@ -1,0 +1,53 @@
+.equalizer {
+    width: 380px;
+    height: 235px;
+    margin: 50px auto;
+    background-color: #333333;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+  }
+  
+  .equalizer  div {
+    width: 40px;
+    background: repeating-linear-gradient(0deg, transparent, transparent 20px, #333 20px, #333 24px),
+                linear-gradient(to bottom, #FFCF57, #FF8D02);
+    border-radius: 5px 5px 0 0;
+    transition: height 1s;
+  }
+  
+  .equalizer div:nth-child(1) {
+   height: 50%;
+  }
+  
+  div:nth-child(2) {
+    height: 70%;
+  }
+  
+  div:nth-child(3) {
+    height: 60%;
+  }
+  
+  div:nth-child(4) {
+    height: 19.5%;
+  }
+  
+  div:nth-child(5) {
+    height: 9.5%;
+  }
+  
+  div:nth-child(6) {
+    height: 40%;
+  }
+  
+  div:nth-child(7) {
+    height: 90%;
+  }
+  
+  div:nth-child(8) {
+    height: 80%;
+  }
+  
+  .equalizer div:hover {
+    height: 0;
+  }
