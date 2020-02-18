@@ -1,0 +1,26 @@
+﻿@{
+    Layout ="~/Layouts/_GeneralLayout.cshtml";
+}
+
+@using XtEpamTask06.Entities; 
+@using XtEpamTask06.Ioc;
+
+    <div class="left-column">
+        <form action="~/Pages/AddUser.cshtml" method="post" enctype="multipart/form-data">
+            <h1 class="h1-column">User information</h1>
+            <label class="label-form" for="user-name">User name</label>
+            <input type="text" name="user-name" value="" class="form-input" placeholder="User name" id="user-name" />
+            <label class="label-form" for="birth-date">Birth date</label>
+            <input type="date" name="birth-date" value="" class="form-input" id="birth-date" />
+                        
+            <hr class="hr-form" />
+            <button class="button-form">Add user</button>
+        </form>
+    </div>
+
+<div class="right-column">
+    <h1 class="h1-column">User list</h1>
+    @{ 
+        var _userLogic = Dependency.UserLogic;
+    }
+</div>

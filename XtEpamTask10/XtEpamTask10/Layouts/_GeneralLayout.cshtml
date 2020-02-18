@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main page</title>
+    <link rel="stylesheet" type="text/css" href="~/styles/styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <a href="~/index.cshtml" class="menu-elem">Main page</a>
+            <a href="~/Pages/Users.cshtml" class="menu-elem">Users</a>
+            <a href="~/Pages/Awards.cshtml" class="menu-elem">Awards</a>
+
+
+
+        </div>
+    </header>
+    <div class="container-content">
+        @RenderBody()
+    </div>
+</body>
+</html>
