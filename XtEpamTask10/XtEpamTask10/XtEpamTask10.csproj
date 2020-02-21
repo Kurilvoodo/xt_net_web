@@ -88,14 +88,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="styles\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Layouts\_GeneralLayout.cshtml" />
     <None Include="packages.config" />
-    <None Include="scripts\index.cshtml" />
+    <Content Include="index.cshtml" />
+    <Content Include="Pages\Users.cshtml" />
+    <Content Include="Pages\Awards.cshtml" />
+    <Content Include="Pages\AddUser.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -104,9 +109,24 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Layouts\" />
-    <Folder Include="Pages\" />
-    <Folder Include="styles\" />
+    <Folder Include="scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Task10.BLL.Interfaces\Task10.BLL.Interfaces.csproj">
+      <Project>{8290b318-f8c1-41c7-846a-b19f40fd6ff8}</Project>
+      <Name>Task10.BLL.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task10.Entities\Task10.Entities.csproj">
+      <Project>{a02226f3-3408-4f78-99c6-c6d359355449}</Project>
+      <Name>Task10.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Task10.Ioc\Task10.Ioc.csproj">
+      <Project>{d2d979f1-f240-4df9-9720-20307f41d03e}</Project>
+      <Name>Task10.Ioc</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

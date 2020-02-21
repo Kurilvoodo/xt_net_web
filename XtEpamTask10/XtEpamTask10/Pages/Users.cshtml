@@ -1,9 +1,8 @@
 ﻿@{
     Layout ="~/Layouts/_GeneralLayout.cshtml";
 }
-
-@using XtEpamTask06.Entities; 
-@using XtEpamTask06.Ioc;
+@using Task10.Entities;
+@using Task10.Ioc;
 
     <div class="left-column">
         <form action="~/Pages/AddUser.cshtml" method="post" enctype="multipart/form-data">
@@ -21,6 +20,23 @@
 <div class="right-column">
     <h1 class="h1-column">User list</h1>
     @{ 
-        var _userLogic = Dependency.UserLogic;
+        var _userLogic = DependencyResolver.UserLogic;
+    }
+
+    @foreach (User item in _userLogic.GetAll())
+    { 
+        <div >
+            <p>
+                User id:@item.Id<br />
+                Name: @item.Name<br />
+                Birth: @item.DateOfBirth<br />
+                Age: @item.Age<br />
+            </p>
+            <form action="~/Pages/" method="post">
+
+                </form>
+
+        </div>
+
     }
 </div>
