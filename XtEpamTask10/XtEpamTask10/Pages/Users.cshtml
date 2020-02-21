@@ -1,42 +1,82 @@
 ﻿@{
-    Layout ="~/Layouts/_GeneralLayout.cshtml";
+    Layout = "~/Layouts/_GeneralLayout.cshtml";
 }
 @using Task10.Entities;
 @using Task10.Ioc;
 
-    <div class="left-column">
-        <form action="~/Pages/AddUser.cshtml" method="post" enctype="multipart/form-data">
-            <h1 class="h1-column">User information</h1>
-            <label class="label-form" for="user-name">User name</label>
-            <input type="text" name="user-name" value="" class="form-input" placeholder="User name" id="user-name" />
-            <label class="label-form" for="birth-date">Birth date</label>
-            <input type="date" name="birth-date" value="" class="form-input" id="birth-date" />
-                        
-            <hr class="hr-form" />
-            <button class="button-form">Add user</button>
-        </form>
-    </div>
+<div class="left-column">
+    <form action="~/Pages/AddUser.cshtml" method="post" enctype="multipart/form-data">
+        <h1 class="h1-column">User information</h1>
+        <label class="label-form" for="user-name">User name</label>
+        <input type="text" name="user-name" value="" class="form-input" placeholder="User name" id="user-name" />
+        <label class="label-form" for="birth-date">Birth date</label>
+        <input type="date" name="birth-date" value="" class="form-input" id="birth-date" />
+
+        <hr class="hr-form" />
+        <button class="button-form">Add user</button>
+    </form>
+</div>
 
 <div class="right-column">
     <h1 class="h1-column">User list</h1>
-    @{ 
+    @{
         var _userLogic = DependencyResolver.UserLogic;
     }
 
     @foreach (User item in _userLogic.GetAll())
-    { 
-        <div >
+    {
+        <div>
             <p>
                 User id:@item.Id<br />
                 Name: @item.Name<br />
                 Birth: @item.DateOfBirth<br />
                 Age: @item.Age<br />
             </p>
-            <form action="~/Pages/" method="post">
+            <form action="~/Pages/RemoveUser" method="post">
+                <input type="number" name="user-id" value="@item.Id">
+                <button>Remove user</button>
+            </form>
+            <button onclick="openModalWindow('modal-windows-edit','modal-input-id-user',@item.Id)">Edit</button>
+            @if (item.Awards.Count > 0)
+            {
+                <ul>
+                    @foreach (Award award in item.Awards)
+                    {
+                        <li>
+                            <p> List: awards</p>
+                            <hr />
+                            Id: @award.Id  Title: @award.Title
+                            <form action="~/Pages/RemoveAwardFromUser" method="post">
+                                <input type="number" name="user-id" value="@item.Id" class="hidden">
+                                <input type="number" name="award-id" value="@award.Id" class="hidden">
+                                <button>Remove</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
 
-                </form>
-
+            }
         </div>
+        <hr />
 
     }
 </div>
+<div id="modal-window-edit">
+    <div id="modal-content">
+        <button id="close-modal" onclick="closeModalWindow('modal-window-edit')">&times;</button>
+        <form action="~/Pages/EditUser" method="post" enctype="multipart/form-data">
+            <h1 class="h1-column">Edit information</h1>
+            <label class="label-form" for="modal-user-name">New user name</label>
+            <input id="modal-user-name" text" name="user-name" value="" placeholder="New user name" />
+            <label for="modal-birth-date" class="label-form">New birth date</label>
+            <input id="modal-birth-date" type="date" name="birth-date" value="" />
+            <label for="modal-image-input" class="label-form">New image</label>
+            
+            <input type="text" id="modal-input-id-user" name="user-id" class="hidden-input" value="" />
+            <hr class="hr-form" />
+            <button class="button-form">Edit</button>
+        </form>
+    </div>
+</div>
+
+<script src="~/scripts/modalWindow.js"></script>

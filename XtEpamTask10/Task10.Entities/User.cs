@@ -6,7 +6,7 @@ namespace Task10.Entities
     public class User
     {
         public int Id { get; set; }
-        public string Name { get; private set; }
+        public string Name { get; set; }
         private DateTime _dateOfBirth;
         public List<Award> Awards {  get; private set; }
 

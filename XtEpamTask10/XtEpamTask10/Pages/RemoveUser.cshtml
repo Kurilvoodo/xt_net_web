@@ -1,0 +1,21 @@
+﻿@using Task10.Entities
+@using Task10.Ioc
+
+@{
+    var _userLogic = DependencyResolver.UserLogic;
+
+    if (IsPost)
+    {
+        if (Request["user-id"] != null &&
+        Request["user-id"] != "")
+        {
+            int userId;
+            if (int.TryParse(Request["user-id"], out userId))
+            {
+                _userLogic.Remove(userId);
+            }
+        }
+    }
+
+    Response.Redirect("~/Pages/Users");
+}

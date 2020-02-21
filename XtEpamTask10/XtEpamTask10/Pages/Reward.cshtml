@@ -1,0 +1,30 @@
+﻿@using Task10.Entities
+@using Task10.Ioc
+
+@{
+    var _awardLogic = DependencyResolver.AwardLogic;
+    var _userLogic = DependencyResolver.UserLogic;
+
+    if (IsPost)
+    {
+        if (Request["user-name"] != null &&
+        Request["award-id"] != null &&
+        Request["user-name"] != "" &&
+        Request["award-id"] != "")
+        {
+            User _user = _userLogic.GetAll().FirstOrDefault(t => t.Name == Request["user-name"]);
+            int _awardId;
+            if (_user != null &&
+            int.TryParse(Request["award-id"], out _awardId))
+            {
+                Award _award = _awardLogic.GetById(_awardId);
+                if (_award != null)
+                {
+                    _userLogic.Reward(_user.Id, _award);
+                }
+            }
+        }
+    }
+
+    Response.Redirect("~/Pages/Awards");
+}

@@ -1,0 +1,26 @@
+﻿@using Task10.Entities
+@using Task10.Ioc
+
+@{
+    var _awardLogic = DependencyResolver.AwardLogic;
+    var _userLogic = DependencyResolver.UserLogic;
+
+    if (IsPost)
+    {
+        if (Request["award-id"] != null &&
+        Request["award-id"] != "")
+        {
+            int _awardId;
+            if (int.TryParse(Request["award-id"], out _awardId))
+            {
+                foreach (User user in _userLogic.GetAll())
+                {
+                    Award award = _awardLogic.GetById(_awardId);
+                    user.Awards.Remove(award);
+                }
+                _awardLogic.Remove(_awardId);
+            }
+        }
+    }
+    Response.Redirect("~/Pages/Awards");
+}

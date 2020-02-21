@@ -1,5 +1,65 @@
 ﻿@{
-    Layout ="~/Layouts/_GeneralLayout.cshtml";
+    Layout = "~/Layouts/_GeneralLayout.cshtml";
 }
+@using Task10.Entities;
+@using Task10.Ioc;
 
+<div class="left-column">
+    <form action="~/Pages/AddAward" method="post" enctype="multipart/form-data">
+        <h1 class="h1-column">Award information</h1>
+        <label class="label-form" for="award-title">Award title</label>
+        <input type="text" name="award-title" value="" class="form-input" placeholder="Award title" id="award-title" />
+        <label class="label-form" for="image-award">Choose image</label>
+        <input type="file" name="image" class="image-input" value="" accept="image/*" id="image-award" />
+        <hr class="hr-form" />
+        <button class="button-form">Add award</button>
+    </form>
+</div>
+<div class="right-column">
+    <h1 class="h1-column">Award list</h1>
+    @{
+        var _awardLogic = DependencyResolver.AwardLogic;
+    }
 
+    @foreach(Award item in _awardLogic.GetAll())
+    {
+    <div class="award">
+        
+        <p class="award-info">
+            Award id: @item.Id<br />
+            Title: @item.Title<br />
+        </p>
+        <form action="~/Pages/RemoveAward" method="post" >
+            <input type="text" name="award-id" value="@item.Id" class="hidden" />
+            <button>Remove reward</button>
+        </form>
+        <button onclick="openModalWindow('modal-window-edit', 'modal-input-id-award', @item.Id)">Edit</button>
+        <form action="~/Pages/Reward" method="post">
+            <input  type="text" name="user-name" value="" placeholder="User name" />
+            <input type="text" name="award-id" value="@item.Id" class="hidden-input" />
+            <button>Reward</button>
+        </form>
+    </div>
+    <hr class="hr-form" />
+    }
+</div>
+
+<!--Modal window code-->
+<div id="modal-window-edit" class="modal-window">
+    <div id="modal-content">
+        <button id="close-modal" onclick="closeModalWindow('modal-window-edit')">&times;</button>
+        <form action="~/Pages/EditAward" method="post" enctype="multipart/form-data">
+            <h1 class="h1-column">Edit information</h1>
+            <label class="label-form" for="modal-award-title">Award title</label>
+            <input id="modal-award-title" type="text" name="award-title" class="form-input" placeholder="New award title" />
+            
+            
+            <input type="text" id="modal-input-id-award" name="award-id" class="hidden-input" value="" />
+            <hr class="hr-form" />
+            <button >Edit</button>
+        </form>
+    </div>
+</div>
+<!--Modal window code-->
+
+<script src="~/scripts/modalWindow.js"></script>

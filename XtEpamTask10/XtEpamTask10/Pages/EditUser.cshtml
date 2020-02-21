@@ -1,0 +1,42 @@
+﻿@using Task10.Entities;
+@using Task10.Ioc;
+
+@{
+    var _userLogic = DependencyResolver.UserLogic;
+    if (IsPost)
+    {
+        if (Request["user-name"] != null &&
+            Request["birth-date"] != null &&
+            Request["user-name"] != "" &&
+            Request["birth-date"] != "")
+        {
+            int _userId;
+            if (int.TryParse(Request["user-id"], out _userId))
+            {
+                User user = _userLogic.GetById(_userId);
+
+                if(!(Request["birth-date"]==""))
+                {
+                    string[] date = Request["birth-date"].Split('-');
+                    int year;
+                    int month;
+                    int day;
+
+                    if (date.Length == 3 &&
+                        int.TryParse(date[0], out year) &&
+                        int.TryParse(date[1], out month) &&
+                        int.TryParse(date[3], out day))
+                    {
+                        user.DateOfBirth = new System.DateTime(year, month, day);
+                    }
+                }
+                if (!(Request["user-name"] == ""))
+                {
+                    user.Name = Request["user-name"];
+                }
+            }
+
+        }
+    }
+    Response.Redirect("~/Pages/Awards");
+}

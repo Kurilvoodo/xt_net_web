@@ -1,0 +1,25 @@
+﻿@using Task10.Entities;
+@using Task10.Ioc;
+
+@{ 
+    var _awardLogic = DependencyResolver.AwardLogic;
+    if (IsPost)
+    {
+        if (Request["award-title"] != null &&
+           Request["award-id"] != null &&
+           Request["award-id"] != "" &&
+           Request["award-title"] != "")
+        {
+            int awardId;
+            if(int.TryParse(Request["award-id"], out awardId))
+            {
+                Award _award = _awardLogic.GetById(awardId);
+                if (!(Request["award-title"] == ""))
+                {
+                    _award.Title = Request["award-title"];
+                }
+            }
+        }
+    }
+    Response.Redirect("~/Pages/Awards");
+}

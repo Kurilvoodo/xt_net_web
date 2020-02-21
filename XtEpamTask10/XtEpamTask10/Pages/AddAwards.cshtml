@@ -1,0 +1,18 @@
+﻿@using Task10.Entities
+@using Task10.Ioc
+
+@{ 
+    var _awardLogic = DependencyResolver.AwardLogic;
+
+    if (IsPost)
+    {
+        if (Request["award-title"] != null &&
+            Request["award-title"] != "")
+        {
+            Award award = new Award(Request["award-title"]);
+            _awardLogic.Add(award);
+        }
+    }
+
+    Response.Redirect("~/Pages/Awards");
+}

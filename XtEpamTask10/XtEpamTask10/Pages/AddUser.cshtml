@@ -1,17 +1,31 @@
-﻿@{
-    Layout = null;
+﻿@using Task10.Entities;
+@using Task10.Ioc;
+
+@{ 
+    var _userLogic = DependencyResolver.UserLogic;
+
+    if (IsPost)
+    {
+        if (Request["user-name"] != null &&
+            Request["birth-date"] != null &&
+            Request["user-name"] != "" &&
+            Request["birth-date"] != "")
+        {
+            string[] date = Request["birth-date"].Split('-');
+            int year;
+            int month;
+            int day;
+
+            if(date.Length == 3 &&
+                int.TryParse(date[0], out year) &&
+                int.TryParse(date[1], out month) &&
+                int.TryParse(date[2], out day))
+            {
+                User user = new User(Request["user-name"], new DateTime(year, month, day));
+                _userLogic.Add(user);
+            }
+
+        }
+    }
+    Response.Redirect("~/Pages/Users");
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title></title>
-</head>
-<body>
-    <div>
-    
-    </div>
-</body>
-</html>
