@@ -5,12 +5,12 @@
 @using Task10.Ioc;
 
 <div class="left-column">
-    <form action="~/Pages/AddAward" method="post" enctype="multipart/form-data">
+    <form action="~/Pages/AddAwards" method="post" enctype="multipart/form-data">
         <h1 class="h1-column">Award information</h1>
         <label class="label-form" for="award-title">Award title</label>
         <input type="text" name="award-title" value="" class="form-input" placeholder="Award title" id="award-title" />
-        <label class="label-form" for="image-award">Choose image</label>
-        <input type="file" name="image" class="image-input" value="" accept="image/*" id="image-award" />
+        
+        
         <hr class="hr-form" />
         <button class="button-form">Add award</button>
     </form>
@@ -30,7 +30,7 @@
             Title: @item.Title<br />
         </p>
         <form action="~/Pages/RemoveAward" method="post" >
-            <input type="text" name="award-id" value="@item.Id" class="hidden" />
+            <input type="text" name="award-id" value="@item.Id" class="hidden-input" />
             <button>Remove reward</button>
         </form>
         <button onclick="openModalWindow('modal-window-edit', 'modal-input-id-award', @item.Id)">Edit</button>
@@ -56,7 +56,7 @@
             
             <input type="text" id="modal-input-id-award" name="award-id" class="hidden-input" value="" />
             <hr class="hr-form" />
-            <button >Edit</button>
+            <button >Finish Editing</button>
         </form>
     </div>
 </div>
