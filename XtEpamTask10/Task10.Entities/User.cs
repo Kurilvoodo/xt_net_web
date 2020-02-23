@@ -13,7 +13,7 @@ namespace Task10.Entities
         public DateTime DateOfBirth
         {
             get => _dateOfBirth;
-            private set
+            set
             {
                 if (value < DateTime.Now)
                     _dateOfBirth = value;
