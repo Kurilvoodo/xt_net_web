@@ -13,6 +13,11 @@ namespace Task10.Entities
         {
             this.Title = title;
         }
+
+        public Award()
+        {
+        }
+
         public override string ToString()
         {
             return $"Award" + Environment.NewLine +

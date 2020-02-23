@@ -1,31 +1,111 @@
-use master;
+USE [master]
+GO
 
-drop database if exists XtEpamTask11;
+/****** Object:  Database [XtEpamTask11Demo]    Script Date: 23.02.2020 23:14:37 ******/
+CREATE DATABASE [XtEpamTask11Demo]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'XtEpamTask11Demo', FILENAME = N'D:\SQLExpress\MSSQL14.SQLEXPRESS\MSSQL\DATA\XtEpamTask11Demo.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'XtEpamTask11Demo_log', FILENAME = N'D:\SQLExpress\MSSQL14.SQLEXPRESS\MSSQL\DATA\XtEpamTask11Demo_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
 
-create database XtEpamTask11;
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [XtEpamTask11Demo].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
 
-use XtEpamTask11;
+ALTER DATABASE [XtEpamTask11Demo] SET ANSI_NULL_DEFAULT OFF 
+GO
 
+ALTER DATABASE [XtEpamTask11Demo] SET ANSI_NULLS OFF 
+GO
 
-create table users (
-	Id int primary key identity(1,1),
-	Name nvarchar(50) not null,
-	DateOfBirth date not null,
-	UserImage nvarchar(MAX) not null
-);
+ALTER DATABASE [XtEpamTask11Demo] SET ANSI_PADDING OFF 
+GO
 
-create table awards (
-	Id int primary key identity(1,1),
-	Title nvarchar(50) not null,
-	AwardImage nvarchar(MAX) not null
-);
+ALTER DATABASE [XtEpamTask11Demo] SET ANSI_WARNINGS OFF 
+GO
 
-create table users_awards (
-	UserId int not null,
-	AwardId int not null,
-	constraint User_Award_Pair unique (UserId, AwardId),
-	constraint FK_UserId foreign key (UserId) references users(Id) on delete cascade,
-	constraint FK_AwardId foreign key (AwardId) references awards(Id) on delete cascade
-);
+ALTER DATABASE [XtEpamTask11Demo] SET ARITHABORT OFF 
+GO
 
+ALTER DATABASE [XtEpamTask11Demo] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET  DISABLE_BROKER 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET RECOVERY SIMPLE 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET QUERY_STORE = OFF
+GO
+
+ALTER DATABASE [XtEpamTask11Demo] SET  READ_WRITE 
+GO
 

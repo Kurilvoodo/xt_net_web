@@ -30,6 +30,10 @@ namespace Task10.Entities
             Awards = new List<Award>();
         }
 
+        public User()
+        {
+        }
+
         public override string ToString()
         {
             StringBuilder info = new StringBuilder($"Id: {Id}" + Environment.NewLine +
